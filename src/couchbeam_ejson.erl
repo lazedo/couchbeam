@@ -12,14 +12,14 @@
 -include("couchbeam.hrl").
 
 
--ifndef('WITH_JIFFY').
--define(JSON_ENCODE(D), jsx:encode(pre_encode(D))).
--define(JSON_DECODE(D), post_decode(jsx:decode(D))).
-
--else.
+%-ifndef('WITH_JIFFY').
+%-define(JSON_ENCODE(D), jsx:encode(pre_encode(D))).
+%-define(JSON_DECODE(D), post_decode(jsx:decode(D))).
+%
+%-else.
 -define(JSON_ENCODE(D), jiffy:encode(D, [uescape])).
 -define(JSON_DECODE(D), jiffy:decode(D)).
--endif.
+%-endif.
 
 
 -spec encode(ejson()) -> binary().
